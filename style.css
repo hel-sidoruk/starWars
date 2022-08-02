@@ -1,6 +1,6 @@
 @font-face {
   font-family: "allstarregular";
-  src: url("../fonts/all_star_resort-webfont.woff2") format("woff2");
+  src: url("./fonts/all_star_resort-webfont.woff2") format("woff2");
   font-weight: normal;
   font-style: normal; }
 body {
@@ -37,7 +37,7 @@ canvas {
   bottom: 0;
   z-index: 500;
   background-color: #000;
-  background-image: url("../images/back.jpg");
+  background-image: url("./images/back.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   transition: all 1s ease-in-out; }
