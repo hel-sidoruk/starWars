@@ -12,13 +12,6 @@ export function initMouse() {
   if (window.innerWidth > 768) {
     document.addEventListener('mousemove', moveMouse)
 
-    document.querySelectorAll("a").forEach(link =>{
-      link.addEventListener('mouseover', ()=>{
-        mouse.classList.add('links-visible')
-      })
-      link.addEventListener('mouseleave', ()=>{
-        mouse.classList.remove('links-visible')
-      })
-    })
+
   }
 }
