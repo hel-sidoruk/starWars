@@ -381,9 +381,10 @@ img {
   margin-bottom: 10px;
   letter-spacing: 2px;
   color: #e6e6e6;
-  padding: 0 120px;
   text-align: center;
-  margin-bottom: 100px;
+  margin-bottom: 45px;
+  grid-column-start: 2;
+  grid-column-end: 12;
 }
 .back-link {
   color: #fff;
@@ -443,8 +444,6 @@ img {
   font-weight: 600;
 }
 
-/*# sourceMappingURL=style.css.map */
-
 .episode-container::after {
   content: "";
   position: fixed;
@@ -476,24 +475,59 @@ img {
 .episode-container.the-phantom-menace::after {
   background-image: url('images/the-phantom-menace/back.webp');
 }
-.images-container {
+.episode-container .content {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: 290px 350px 200px 400px;
+  grid-template-columns: repeat(12, 1fr);
   gap: 45px;
   grid-auto-flow: dense;
 }
-.images-container img {
-  height: 100%;
+.film-title {
+  grid-column: span 12;
+  margin-bottom: 25px;
+}
+.episode-image {
   object-fit: cover;
   border-radius: 20px;
+  grid-column: span 4;
+  height: 350px;
 }
-.images-container img:nth-child(8) {
+.episode-image:nth-child(8) {
   order: 1;
-  grid-column-start: 1;
-  grid-column-end: 4;
+  grid-column: span 12;
 }
-.images-container img:nth-child(2),
-.images-container img:nth-child(3) {
-  grid-column: span 2;
+.episode-image:nth-child(4),
+.episode-image:nth-child(5){
+  grid-column: span 8;
+}
+.episode-image:nth-child(7),
+.episode-image:nth-child(9),
+.episode-image:nth-child(10){
+  order: 1;
+}
+
+.planet-block {
+  border: 2px solid #fff;
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+}
+.planet-title {
+  grid-column: span 12;
+  margin-bottom: 0;
+}
+.planet-descr {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  font-size: 28px;
+}
+.planet-descr {
+  border-bottom: 1px solid #999;
+}
+.planet-text {
+  font-weight: 700;
+  color: #fcc22e;
+  font-size: 24px;
 }
