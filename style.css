@@ -461,6 +461,21 @@ img {
 .episode-container.a-new-hope::after {
   background-image: url('images/a-new-hope/back.webp');
 }
+.episode-container.attack-of-the-clones::after {
+  background-image: url('images/attack-of-the-clones/back.webp');
+}
+.episode-container.return-of-the-jedi::after {
+  background-image: url('images/return-of-the-jedi/back.webp');
+}
+.episode-container.revenge-of-the-sith::after {
+  background-image: url('images/revenge-of-the-sith/back.webp');
+}
+.episode-container.the-empire-strikes-back::after {
+  background-image: url('images/the-empire-strikes-back/back.webp');
+}
+.episode-container.the-phantom-menace::after {
+  background-image: url('images/the-phantom-menace/back.webp');
+}
 .images-container {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
