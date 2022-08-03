@@ -11,7 +11,7 @@ export function initBackground() {
   document.body.appendChild(renderer.domElement)
 
   starGeo = new THREE.Geometry()
-  for (let i = 0; i < 7000; i++){
+  for (let i = 0; i < 8000; i++){
     let star = new THREE.Vector3(
       Math.random() * 600 - 300,
       Math.random() * 600 - 300,
