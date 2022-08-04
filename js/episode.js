@@ -24,6 +24,7 @@ function onEntry(entry) {
 }
 
 function renderFilm(data) {
+  document.title = data.title
   console.log(data);
   let title = document.createElement("h1");
   title.classList.add("film-title");
@@ -41,8 +42,45 @@ function renderFilm(data) {
   titlePlanets.classList.add('title', 'planet-title')
   titlePlanets.textContent = 'Planets'
 
+  let showAllBtn = document.createElement('button')
+  showAllBtn.textContent = 'Show all planets'
+  showAllBtn.classList.add('show-planets', 'go-btn')
+  showAllBtn.setAttribute('data-switch', true)
+  showAllBtn.addEventListener("mouseover", () => {
+    document.querySelector(".mouse").classList.add("links-visible");
+  });
+  showAllBtn.addEventListener("mouseleave", () => {
+    document.querySelector(".mouse").classList.remove("links-visible");
+  });
+  showAllBtn.addEventListener('click', ()=>{
+    if (showAllBtn.dataset.switch == 'true') {
+      document.querySelectorAll('.planet-block--hidden').forEach(element=>{
+        element.classList.remove('planet-block--hidden')
+      })
+      showAllBtn.setAttribute('data-switch', false)
+      showAllBtn.textContent = 'Hide'
+    }
+    else if (showAllBtn.dataset.switch == 'false'){
+      let arr = document.querySelectorAll('.planet-block')
+      for (let i = 2; i < arr.length; i++) {
+        arr[i].classList.add('planet-block--hidden')
+      }
+      showAllBtn.setAttribute('data-switch', true)
+      showAllBtn.textContent = 'Show all planets'
+
+    }
+  })
+
+  if (data.planets.length > 2) document.querySelector('.content').append(showAllBtn)
   for (let planet of data.planets) {
-    getData(planet).then(res => renderPlanet(res))
+    let hidden = false
+    if (data.planets.indexOf(planet) >= 2) hidden = true
+    let grid = false
+    if (data.planets.indexOf(planet) == data.planets.length - 1 && data.planets.length % 2 != 0) grid = true
+    getData(planet).then(res => {
+      renderPlanet(res, hidden, grid)
+    })
+
   }
   for (let i = 1; i < 9; i++) {
     let image = new Image()
@@ -51,9 +89,9 @@ function renderFilm(data) {
     document.querySelector('.content').append(image)
   }
   document.querySelector('.content').append(titlePlanets)
-  for (let species of data.species) {
-    getData(species).then(res => console.log(res.name))
-  }
+  // for (let species of data.characters) {
+  //   getData(species).then(res => console.log(res))
+  // }
   let options = { threshold: [0.5] };
   let observer = new IntersectionObserver(onEntry, options);
   let elements = document.querySelectorAll(".element-animation");
@@ -61,36 +99,20 @@ function renderFilm(data) {
     observer.observe(elm);
   }
 }
-function renderPlanet(planet) {
+function renderPlanet(planet, hidden, grid) {
   let planetBlock = document.createElement('div')
   planetBlock.classList.add('planet-block')
-  let planetName = document.createElement('p')
-  planetName.classList.add('planet-descr')
-  planetName.classList.add('text')
-  planetName.innerHTML = `<span class="planet-text">Name: </span>${planet.name}`
-  let population = document.createElement('p')
-  population.classList.add('planet-descr')
-  population.classList.add('text')
-  population.innerHTML = `<span class="planet-text">Population: </span>${planet.population}`
-  let terrain = document.createElement('p')
-  terrain.classList.add('planet-descr')
-  terrain.classList.add('text')
-  terrain.innerHTML = `<span class="planet-text">Terrain: </span>${planet.terrain}`
-  let orbitalPeriod = document.createElement('p')
-  orbitalPeriod.classList.add('planet-descr')
-  orbitalPeriod.classList.add('text')
-  orbitalPeriod.innerHTML = `<span class="planet-text">Orbital Period: </span>${planet.orbital_period}`
-  let climate = document.createElement('p')
-  climate.classList.add('planet-descr')
-  climate.classList.add('text')
-  climate.innerHTML = `<span class="planet-text">Climate: </span>${planet.climate}`
-  let diameter = document.createElement('p')
-  diameter.classList.add('planet-descr')
-
-  diameter.classList.add('text')
-  diameter.innerHTML = `<span class="planet-text">Diameter: </span>${planet.diameter}`
-  for (let value of [planetName, population, terrain, orbitalPeriod, climate, diameter]) planetBlock.append(value)
+  if (hidden) planetBlock.classList.add('planet-block--hidden')
+  if (grid) planetBlock.classList.add('planet-block--12')
+  for (let value of ['name', 'population', 'terrain', 'climate', 'diameter']) addPlanetDescr(planet, value, planetBlock)
   document.querySelector('.content').append(planetBlock)
+}
+
+function addPlanetDescr(planet, query, planetBlock) {
+  let text = document.createElement('p')
+  text.classList.add('planet-descr', 'text')
+  text.innerHTML = `<span class="planet-text">${query}: </span>${planet[query]}`
+  planetBlock.append(text)
 }
 
 document.querySelectorAll("a").forEach((link) => {
@@ -101,10 +123,10 @@ document.querySelectorAll("a").forEach((link) => {
     document.querySelector(".mouse").classList.remove("links-visible");
   });
 });
+
 document.querySelector('.back-link').addEventListener("mouseover", () => {
   document.querySelector(".mouse").classList.add("back-link-visible");
 });
 document.querySelector('.back-link').addEventListener("mouseleave", () => {
   document.querySelector(".mouse").classList.remove("back-link-visible");
 });
-
