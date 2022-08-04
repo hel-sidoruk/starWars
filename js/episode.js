@@ -25,7 +25,6 @@ function onEntry(entry) {
 
 function renderFilm(data) {
   document.title = data.title
-  console.log(data);
   let title = document.createElement("h1");
   title.classList.add("film-title");
   title.textContent = data.title;
@@ -78,7 +77,8 @@ function renderFilm(data) {
     let grid = false
     if (data.planets.indexOf(planet) == data.planets.length - 1 && data.planets.length % 2 != 0) grid = true
     getData(planet).then(res => {
-      renderPlanet(res, hidden, grid)
+      let planetBlock = renderPlanet(res, hidden, grid)
+      document.querySelector('.content').append(planetBlock)
     })
 
   }
@@ -89,9 +89,23 @@ function renderFilm(data) {
     document.querySelector('.content').append(image)
   }
   document.querySelector('.content').append(titlePlanets)
-  // for (let species of data.characters) {
-  //   getData(species).then(res => console.log(res))
-  // }
+
+  let titleSpecies = document.createElement('h2')
+  titleSpecies.classList.add('title', 'species-title')
+  titleSpecies.textContent = 'Species'
+  document.querySelector('.content').append(titleSpecies)
+
+  let speciesContainer = document.createElement('div')
+  speciesContainer.classList.add('species-container')
+  for (let species of data.species) {
+    getData(species).then(res => {
+      let speciesItem = renderSpecies(res)
+      speciesContainer.append(speciesItem)
+    })
+  }
+
+  document.querySelector('.content').append(speciesContainer)
+
   let options = { threshold: [0.5] };
   let observer = new IntersectionObserver(onEntry, options);
   let elements = document.querySelectorAll(".element-animation");
@@ -99,13 +113,54 @@ function renderFilm(data) {
     observer.observe(elm);
   }
 }
+
+function renderSpecies(data) {
+  console.log(data.name);
+  let speciesBlock = document.createElement('div')
+  speciesBlock.classList.add('species')
+
+  let speciesImage = new Image()
+  speciesImage.classList.add('species-image')
+  if (data.name == `Yoda's species`) {
+    speciesImage.src = `images/species/yoda.webp`
+  }
+  else {
+    speciesImage.src = `images/species/${data.name.toLowerCase().split(' ').join('-')}.webp`
+  }
+
+  let speciesName = document.createElement('h3')
+  speciesName.classList.add('species-name', 'text')
+  if (data.name == `Yoda's species`) {
+    speciesName.textContent = 'Yoda'
+  }
+  else {
+    speciesName.textContent = data.name
+  }
+
+  speciesBlock.addEventListener("mouseover", () => {
+    document.querySelector(".mouse").classList.add("species-link-visible");
+  });
+  speciesBlock.addEventListener("mouseleave", () => {
+    document.querySelector(".mouse").classList.remove("species-link-visible");
+  });
+
+
+  speciesBlock.append(speciesImage)
+  speciesBlock.append(speciesName)
+
+  return speciesBlock
+}
+
+
+
 function renderPlanet(planet, hidden, grid) {
   let planetBlock = document.createElement('div')
   planetBlock.classList.add('planet-block')
   if (hidden) planetBlock.classList.add('planet-block--hidden')
   if (grid) planetBlock.classList.add('planet-block--12')
   for (let value of ['name', 'population', 'terrain', 'climate', 'diameter']) addPlanetDescr(planet, value, planetBlock)
-  document.querySelector('.content').append(planetBlock)
+  // document.querySelector('.content').append(planetBlock)
+  return planetBlock
 }
 
 function addPlanetDescr(planet, query, planetBlock) {

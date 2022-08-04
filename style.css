@@ -120,6 +120,23 @@ canvas {
   opacity: 0;
   transition: opacity 0.3s ease-in-out;
 }
+.species-link-visible::after {
+  content: "View";
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%) scale(1.2);
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 36%;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+
+.species-link-visible::before {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
 
 
 .preloader {
@@ -547,4 +564,30 @@ img {
   grid-column: span 12;
   order: 1;
   margin-bottom: 40px;
+}
+
+/* species */
+
+.species-title {
+  grid-column: span 12;
+  margin-bottom: 0;
+}
+.species-container {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 45px;
+  grid-column: span 12;
+  grid-auto-flow: dense;
+  align-items: center;
+}
+.species {
+  grid-column: span 3;
+}
+.species-image {
+  max-height: 300px;
+  object-fit: contain;
+}
+.species-name {
+  text-align: center;
+  font-size: 24px;
 }
