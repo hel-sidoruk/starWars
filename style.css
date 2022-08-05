@@ -522,7 +522,14 @@ img {
 .episode-image:nth-child(10){
   order: 1;
 }
-
+.planets-container {
+  padding: 70px 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  gap: 45px;
+  grid-column: span 12;
+}
 .planet-block {
   border: 2px solid #555;
   grid-column: span 6;
@@ -573,6 +580,11 @@ img {
   margin-bottom: 0;
 }
 .species-container {
+  border: 5px solid #ffb600;
+  border-image: linear-gradient(to left top,#ffb600 10%,  transparent 30%, transparent 70%, #ffb600 90%);
+  border-image-slice: 1;
+  margin: 70px 0;
+  padding: 70px 30px;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: 45px;
@@ -590,4 +602,64 @@ img {
 .species-name {
   text-align: center;
   font-size: 24px;
+  text-shadow: 2px 2px 4px #ffb600;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  opacity: 0;
+  z-index: -20;
+  pointer-events: none;
+  transition: all .3s ease-in-out;
+}
+.modal--active {
+  z-index: 100;
+  pointer-events: all;
+  opacity: 1;
+}
+.species-modal {
+  background-color: rgba(0,0,0,0.9);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50vw;
+  height: 85vh;
+  display: flex;
+  padding: 50px;
+  border: 5px solid #ffb600;
+  border-image: linear-gradient(to right top,#fff 10%,  transparent 30%, transparent 70%, #fff 90%);
+  border-image-slice: 1;
+}
+.species-modal img {
+  max-height: 80%;
+  max-width: 50%;
+  object-fit: contain;
+  align-self: center;
+}
+.species-modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.species-modal-content {
+  width: 50%;
+  padding-left: 30px;
+}
+.species-property {
+  font-size: 16px;
+  display: block;
+  line-height: 100%;
+  margin-bottom: 10px;
+  color: #e6e6e6;
+}
+.species-descr {
+  display: block;
+  padding-left: 20px;
+  font-size: 26px;
+  line-height: 110%;
+  margin-bottom: 20px;
 }

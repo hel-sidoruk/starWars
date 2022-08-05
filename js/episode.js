@@ -70,6 +70,11 @@ function renderFilm(data) {
     }
   })
 
+  let planetsContainer = document.createElement('div')
+  planetsContainer.classList.add('planets-container')
+  planetsContainer.append(titlePlanets)
+
+
   if (data.planets.length > 2) document.querySelector('.content').append(showAllBtn)
   for (let planet of data.planets) {
     let hidden = false
@@ -78,25 +83,27 @@ function renderFilm(data) {
     if (data.planets.indexOf(planet) == data.planets.length - 1 && data.planets.length % 2 != 0) grid = true
     getData(planet).then(res => {
       let planetBlock = renderPlanet(res, hidden, grid)
-      document.querySelector('.content').append(planetBlock)
+      planetsContainer.append(planetBlock)
     })
 
   }
+  if (data.planets.length > 2) planetsContainer.append(showAllBtn)
+  document.querySelector('.content').append(planetsContainer)
+
   for (let i = 1; i < 9; i++) {
     let image = new Image()
     image.src = `images/${data.title.toLowerCase().split(' ').join('-')}/${i}.webp`
     image.classList.add('episode-image', 'element-animation')
     document.querySelector('.content').append(image)
   }
-  document.querySelector('.content').append(titlePlanets)
 
   let titleSpecies = document.createElement('h2')
   titleSpecies.classList.add('title', 'species-title')
   titleSpecies.textContent = 'Species'
-  document.querySelector('.content').append(titleSpecies)
 
   let speciesContainer = document.createElement('div')
   speciesContainer.classList.add('species-container')
+  speciesContainer.append(titleSpecies)
   for (let species of data.species) {
     getData(species).then(res => {
       let speciesItem = renderSpecies(res)
@@ -115,7 +122,6 @@ function renderFilm(data) {
 }
 
 function renderSpecies(data) {
-  console.log(data.name);
   let speciesBlock = document.createElement('div')
   speciesBlock.classList.add('species')
 
@@ -136,6 +142,23 @@ function renderSpecies(data) {
   else {
     speciesName.textContent = data.name
   }
+
+
+
+  speciesBlock.addEventListener('click', function(){
+    let modalContent = document.querySelector('.species-modal-content')
+    document.querySelector('.modal').classList.add('modal--active')
+    let imagesSrc = this.firstElementChild.src
+    let idx = imagesSrc.indexOf('images')
+    let path = imagesSrc.slice(idx)
+    let imageSpecies = new Image()
+    imageSpecies.src = path
+    document.querySelector('.species-modal').insertBefore(imageSpecies, modalContent)
+    modalContent.firstElementChild.textContent = this.lastElementChild.textContent
+    for (let value of ['average_height', 'average_lifespan', 'classification', 'eye_colors', 'hair_colors', 'language', 'skin_colors']) {
+      document.getElementById(value).textContent = data[value]
+    }
+  })
 
   speciesBlock.addEventListener("mouseover", () => {
     document.querySelector(".mouse").classList.add("species-link-visible");
@@ -159,7 +182,6 @@ function renderPlanet(planet, hidden, grid) {
   if (hidden) planetBlock.classList.add('planet-block--hidden')
   if (grid) planetBlock.classList.add('planet-block--12')
   for (let value of ['name', 'population', 'terrain', 'climate', 'diameter']) addPlanetDescr(planet, value, planetBlock)
-  // document.querySelector('.content').append(planetBlock)
   return planetBlock
 }
 
@@ -179,9 +201,21 @@ document.querySelectorAll("a").forEach((link) => {
   });
 });
 
+let modal = document.querySelector('.modal')
+
 document.querySelector('.back-link').addEventListener("mouseover", () => {
   document.querySelector(".mouse").classList.add("back-link-visible");
 });
 document.querySelector('.back-link').addEventListener("mouseleave", () => {
   document.querySelector(".mouse").classList.remove("back-link-visible");
 });
+
+document.querySelector('.modal').addEventListener('click', (e)=>{
+  if (e._isClickedInsideModal) return
+  modal.classList.remove('modal--active')
+  modal.querySelector('img').remove()
+})
+
+document.querySelector('.species-modal').addEventListener('click', (e)=>{
+  e._isClickedInsideModal = true
+})

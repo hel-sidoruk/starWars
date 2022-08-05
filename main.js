@@ -1,7 +1,13 @@
 import { initPreloader } from "./js/preloader-animation.js";
 import { initMouse } from "./js/mouse.js";
 import { initBackground } from "./js/background.js";
-initPreloader();
+
+let searchParams = new URLSearchParams(location.search)
+if (searchParams.get('back')) {
+  document.querySelector('.starwars-demo').remove()
+  document.querySelector('.preloader').classList.add('preloader--hidden')
+}
+else initPreloader()
 initMouse();
 initBackground();
 

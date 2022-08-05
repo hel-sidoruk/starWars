@@ -15,8 +15,38 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <div class="modal">
+      <div class="species-modal">
+        <!-- <img src="images/species/yoda.webp" alt=""> -->
+        <div class="species-modal-content">
+          <h2 class="title species-modal-title"></h2>
+          <div class="species-content-descr text">
+            <span class="species-property">average height:</span><span id="average_height" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">average lifespan:</span><span id="average_lifespan" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">classification:</span><span id="classification" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">eye colors:</span><span id="eye_colors" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">hair colors:</span><span id="hair_colors" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">language:</span><span id="language" class="species-descr"></span>
+          </div>
+          <div class="species-content-descr text">
+            <span class="species-property">skin colors:</span><span id="skin_colors" class="species-descr"></span>
+          </div>
+        </div>
+
+      </div>
+    </div>
     <div class="mouse" aria-hidden="true"></div>
-    <a href="index.html" class="back-link">
+    <a href="index.html?back=true" class="back-link">
       <svg
         width="24"
         height="24"
@@ -33,246 +63,6 @@
     </a>
     <div class="container episode-container">
       <div class="content"></div>
-      <!-- <div class="content">
-        <h1 class="film-title">A New Hope</h1>
-        <p class="film-text">
-          It is a period of civil war. Rebel spaceships, striking from a hidden
-          base, have won their first victory against the evil Galactic Empire.
-          During the battle, Rebel spies managed to steal secret plans to the
-          Empire's ultimate weapon, the DEATH STAR, an armored space station
-          with enough power to destroy an entire planet. Pursued by the Empire's
-          sinister agents, Princess Leia races home aboard her starship,
-          custodian of the stolen plans that can save her people and restore
-          freedom to the galaxy....
-        </p>
-        <button class="show-planets go-btn" data-switch="true">
-          Show all planets</button
-        ><img
-          src="images/a-new-hope/1.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/2.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/3.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/4.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/5.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/6.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/7.webp"
-          class="episode-image element-animation element-show"
-        /><img
-          src="images/a-new-hope/8.webp"
-          class="episode-image element-animation element-show"
-        />
-        <h2 class="title species-title">Species</h2>
-        <div class="species-container">
-          <div class="species">
-            <img class="species-image" src="images/species/aleena.webp" alt="">
-            <h3 class="text species-name">aleena</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/chagrian.webp" alt="">
-            <h3 class="text species-name">chagrian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/besalisk.webp" alt="">
-            <h3 class="text species-name">besalisk</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/cerean.webp" alt="">
-            <h3 class="text species-name">cerean</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/clawdite.webp" alt="">
-            <h3 class="text species-name">clawdite</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/droid.webp" alt="">
-            <h3 class="text species-name">droid</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/dug.webp" alt="">
-            <h3 class="text species-name">dug</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/ewok.webp" alt="">
-            <h3 class="text species-name">ewok</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/gungan.webp" alt="">
-            <h3 class="text species-name">gungan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/geonosian.webp" alt="">
-            <h3 class="text species-name">geonosian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/human.webp" alt="">
-            <h3 class="text species-name">human</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/hutt.webp" alt="">
-            <h3 class="text species-name">hutt</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/iktotchi.webp" alt="">
-            <h3 class="text species-name">iktotchi</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/kaminoan.webp" alt="">
-            <h3 class="text species-name">kaminoan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/kel-dor.webp" alt="">
-            <h3 class="text species-name">kel-dor</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/mirialan.webp" alt="">
-            <h3 class="text species-name">mirialan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/mon-calamari.webp" alt="">
-            <h3 class="text species-name">mon-calamari</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/muun.webp" alt="">
-            <h3 class="text species-name">muun</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/nautolan.webp" alt="">
-            <h3 class="text species-name">nautolan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/neimodian.webp" alt="">
-            <h3 class="text species-name">neimodian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/pau'an.webp" alt="">
-            <h3 class="text species-name">pau'an</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/quermian.webp" alt="">
-            <h3 class="text species-name">quermian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/rodian.webp" alt="">
-            <h3 class="text species-name">rodian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/skakoan.webp" alt="">
-            <h3 class="text species-name">skakoan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/sullustan.webp" alt="">
-            <h3 class="text species-name">sullustan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/tholothian.webp" alt="">
-            <h3 class="text species-name">tholothian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/togruta.webp" alt="">
-            <h3 class="text species-name">togruta</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/toong.webp" alt="">
-            <h3 class="text species-name">toong</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/toydarian.webp" alt="">
-            <h3 class="text species-name">toydarian</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/trandoshan.webp" alt="">
-            <h3 class="text species-name">trandoshan</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/twi'lek.webp" alt="">
-            <h3 class="text species-name">twi'lek</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/vulptereen.webp" alt="">
-            <h3 class="text species-name">vulptereen</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/wookie.webp" alt="">
-            <h3 class="text species-name">wookie</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/xexto.webp" alt="">
-            <h3 class="text species-name">xexto</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/yoda.webp" alt="">
-            <h3 class="text species-name">yoda</h3>
-          </div>
-          <div class="species">
-            <img class="species-image" src="images/species/zabrak.webp" alt="">
-            <h3 class="text species-name">zabrak</h3>
-          </div>
-        </div>
-
-        <h2 class="title planet-title">Planets</h2>
-        <div class="planet-block">
-          <p class="planet-descr text">
-            <span class="planet-text">name: </span>Tatooine
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">population: </span>200000
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">terrain: </span>desert
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">climate: </span>arid
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">diameter: </span>10465
-          </p>
-        </div>
-        <div class="planet-block planet-block--hidden planet-block--12">
-          <p class="planet-descr text">
-            <span class="planet-text">name: </span>Yavin IV
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">population: </span>1000
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">terrain: </span>jungle, rainforests
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">climate: </span>temperate, tropical
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">diameter: </span>10200
-          </p>
-        </div>
-        <div class="planet-block">
-          <p class="planet-descr text">
-            <span class="planet-text">name: </span>Alderaan
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">population: </span>2000000000
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">terrain: </span>grasslands, mountains
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">climate: </span>temperate
-          </p>
-          <p class="planet-descr text">
-            <span class="planet-text">diameter: </span>12500
-          </p>
-        </div>
-      </div> -->
     </div>
     <script src="js/three.min.js"></script>
     <script type="module" src="js/episode.js"></script>
