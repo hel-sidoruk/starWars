@@ -1,0 +1,231 @@
+@font-face {
+  font-family: "allstarregular";
+  src: url("../fonts/all_star_resort-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "krophed";
+  src: url("../fonts/krophed-webfont.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+  cursor: none !important;
+}
+body {
+  margin: 0;
+  background-color: #000;
+  min-height: 100vh;
+  width: 100vw;
+  overflow-x: hidden;
+  font-family: "Raleway", sans-serif;
+}
+
+.stop-scroll {
+  overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+p {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  font-size: inherit;
+}
+button {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -2;
+}
+img{
+  width: 100%;
+}
+.mouse {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 45px;
+  height: 45px;
+  border-radius: 100%;
+  z-index: 10000;
+  pointer-events: none;
+}
+.mouse::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0.7;
+  transform: translate(-50%, -50%);
+  width: 35px;
+  height: 35px;
+  background: #d7d7d7;
+  box-shadow: 4px 4px 4px #777777;
+  border-radius: 100%;
+  z-index: 2;
+  transition: opacity 0.3s ease-in-out;
+}
+.mouse::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  opacity: 0.7;
+  transform: translate(-50%, -50%);
+  width: 55px;
+  height: 55px;
+  background: #cdcdcd;
+  border-radius: 100%;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.links-visible::after {
+  border: 5px solid #000;
+  transform: translate(-50%, -50%) scale(0.6);
+  background-color: transparent;
+  transition: 0.3s;
+}
+.links-visible::before {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.back-link-visible::after {
+  border: 5px solid #fff;
+  transform: translate(-50%, -50%) scale(0.6);
+  background-color: transparent;
+  transition: 0.3s;
+}
+.back-link-visible::before {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.species-link-visible::after {
+  content: "View";
+  border: 2px solid #fff;
+  transform: translate(-50%, -50%) scale(1.2);
+  background-color: #000;
+  color: #fff;
+  font-size: 18px;
+  text-align: center;
+  padding-top: 36%;
+  opacity: 0.8;
+  transition: 0.3s;
+}
+.species-link-visible::before {
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+.container {
+  max-width: 1200px;
+  padding: 0 30px;
+  padding-top: 100px;
+  margin: 0 auto;
+}
+.content {
+  padding-bottom: 100px;
+}
+.section-title {
+  text-transform: uppercase;
+  font-family: "krophed";
+  font-size: 94px;
+  margin-bottom: 120px;
+  color: #949494;
+  text-align: center;
+  text-shadow: 4px 4px 6px #fff;
+  font-weight: 400;
+}
+.title {
+  font-family: "allstarregular";
+  font-weight: 400;
+  letter-spacing: 5px;
+  font-size: 64px;
+  text-transform: uppercase;
+  color: #fcc22e;
+  margin-bottom: 100px;
+  text-shadow: 3px 3px 10px #ffb600;
+}
+.element-animation {
+  opacity: 0;
+}
+.element-animation.element-show {
+  opacity: 1;
+  transition: opacity 0.9s ease-in-out;
+}
+.text.element-animation {
+  transform: translateY(-100%);
+}
+.text.element-animation.element-show {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.9s ease-in-out, transform 0.7s ease-in-out;
+  transition-delay: 0.3s;
+}
+.title.element-animation {
+  transform: scale(0);
+}
+.title.element-animation.element-show {
+  opacity: 1;
+  transform: scale(1);
+  transition: opacity 0.9s ease-in-out, transform 0.5s ease-in-out;
+  transition-delay: 0.5s;
+}
+.go-btn.element-animation.element-show {
+  transition-delay: 0.7s;
+}
+.text {
+  font-size: 32px;
+  line-height: 140%;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 3px;
+  color: #fff;
+}
+.go-btn {
+  border: 2px solid #fff;
+  padding: 15px 30px;
+  font-size: 24px;
+  letter-spacing: 1px;
+  color: #fff;
+  text-transform: uppercase;
+  background-color: #000;
+  transition: all 0.3s ease-in-out;
+}
+.go-btn:hover {
+  background-color: #e6e6e6;
+  color: #111;
+  border-color: #e6e6e6;
+  font-weight: 600;
+}
+.title-main {
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+.species-property {
+  display: none;
+}
+.back-link {
+  display: none;
+}

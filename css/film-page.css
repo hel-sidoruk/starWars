@@ -1,0 +1,280 @@
+.back-link {
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 20px;
+  position: fixed;
+  top: 40px;
+  left: 40px;
+  padding-left: 32px;
+  z-index: 20;
+  display: unset;
+}
+.back-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  height: 2px;
+  background-color: #fff;
+  width: 100%;
+  transform: scale(0);
+  transition: all .3s ease-in-out;
+}
+.back-link:hover::after {
+  transform: scale(1);
+}
+.back-link svg {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  transition: all .3s ease-in-out;
+}
+.back-link:hover svg {
+  transform: translateX(-6px) translateY(-50%);
+}
+.episode-container.a-new-hope::after {
+  background-image: url('../images/a-new-hope/back.webp');
+}
+.episode-container.attack-of-the-clones::after {
+  background-image: url('../images/attack-of-the-clones/back.webp');
+}
+.episode-container.return-of-the-jedi::after {
+  background-image: url('../images/return-of-the-jedi/back.webp');
+}
+.episode-container.revenge-of-the-sith::after {
+  background-image: url('../images/revenge-of-the-sith/back.webp');
+}
+.episode-container.the-empire-strikes-back::after {
+  background-image: url('../images/the-empire-strikes-back/back.webp');
+}
+.episode-container.the-phantom-menace::after {
+  background-image: url('../images/the-phantom-menace/back.webp');
+}
+.episode-container .content {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 45px;
+  grid-auto-flow: dense;
+}
+.episode-container::after {
+  content: "";
+  position: fixed;
+  z-index:-1;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  pointer-events: none;
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.3;
+}
+.film-title {
+  order: 1;
+  text-transform: uppercase;
+  font-family: "krophed";
+  font-size: 64px;
+  margin-bottom: 80px;
+  color: #949494;
+  text-align: center;
+  text-shadow: 4px 4px 6px #fff;
+  font-weight: 400;
+  grid-column: span 12;
+  margin-bottom: 25px;
+}
+.film-text {
+  order: 2;
+  text-indent: 50px;
+  font-size: 24px;
+  line-height: 140%;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  letter-spacing: 2px;
+  color: #e6e6e6;
+  text-align: center;
+  margin-bottom: 45px;
+  grid-column-start: 2;
+  grid-column-end: 12;
+}
+.film-text.element-animation.element-show {
+  transition-delay: .2s;
+}
+.episode-image {
+  object-fit: cover;
+  border-radius: 20px;
+  grid-column: span 4;
+  height: 350px;
+}
+.episode-image.element-animation.element-show {
+  transition-delay: .3s;
+}
+.episode-image:nth-child(7) {
+  order: 10;
+  grid-column: span 12;
+}
+.episode-image:nth-child(4),
+.episode-image:nth-child(6){
+  grid-column: span 8;
+}
+.episode-image:nth-child(4) {
+  order: 3;
+}
+.episode-image:nth-child(5) {
+  order: 4;
+}
+.episode-image:nth-child(3) {
+  order: 6;
+}
+.episode-image:nth-child(6) {
+  order: 7;
+}
+.episode-image:nth-child(8),
+.episode-image:nth-child(9),
+.episode-image:nth-child(10) {
+  order: 9;
+}
+.planets-container {
+  order: 5;
+  padding: 70px 0;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-auto-flow: dense;
+  gap: 45px;
+  grid-column: span 12;
+}
+.planet-block {
+  border: 2px solid #555;
+  grid-column: span 6;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 30px;
+  position: unset;
+  transform: scaleY(1);
+  transform-origin: top;
+  transition: transform .3s ease-in-out;
+}
+.planet-block--12 {
+  grid-column: span 12;
+}
+.planet-block.planet-block--hidden {
+  transform: scaleY(0);
+  position: absolute;
+}
+.planet-title {
+  grid-column: span 12;
+  margin-bottom: 0;
+}
+.planet-descr {
+  display: flex;
+  justify-content: space-between;
+  text-align: right;
+  font-size: 28px;
+}
+.planet-descr {
+  border-bottom: 1px solid #999;
+}
+.planet-text {
+  font-weight: 700;
+  color: #fcc22e;
+  font-size: 24px;
+}
+.show-planets {
+  grid-column: span 12;
+  order: 1;
+  margin-bottom: 40px;
+}
+.species-title {
+  grid-column: span 12;
+  margin-bottom: 0;
+}
+.species-container {
+  order: 8;
+  border: 5px solid #ffb600;
+  border-image: linear-gradient(to left top,#ffb600 10%,  transparent 30%, transparent 70%, #ffb600 90%);
+  border-image-slice: 1;
+  margin: 70px 0;
+  padding: 70px 30px;
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 45px;
+  grid-column: span 12;
+  grid-auto-flow: dense;
+  align-items: center;
+}
+.species {
+  grid-column: span 3;
+}
+.species-image {
+  max-height: 300px;
+  object-fit: contain;
+}
+.species-name {
+  text-align: center;
+  font-size: 24px;
+  text-shadow: 2px 2px 4px #ffb600;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  opacity: 0;
+  z-index: -20;
+  pointer-events: none;
+  transition: all .3s ease-in-out;
+  overflow-y: auto;
+}
+.modal--active {
+  z-index: 100;
+  pointer-events: all;
+  opacity: 1;
+}
+.species-modal {
+  background-color: rgba(0,0,0,0.9);
+  position: relative;
+  width: 50vw;
+  height: 85vh;
+  margin: 80px auto;
+  display: flex;
+  padding: 50px;
+  border: 5px solid #ffb600;
+  border-image: linear-gradient(to right top,#fff 10%,  transparent 30%, transparent 70%, #fff 90%);
+  border-image-slice: 1;
+  opacity: 0;
+  transition: all .5s ease-in-out;
+}
+.modal--active .species-modal {
+  opacity: 1;
+}
+.species-modal img {
+  max-height: 80%;
+  max-width: 50%;
+  object-fit: contain;
+  align-self: center;
+}
+.species-modal-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+.species-modal-content {
+  width: 50%;
+  padding-left: 30px;
+}
+.species-property {
+  font-size: 16px;
+  line-height: 100%;
+  margin-bottom: 10px;
+  color: #e6e6e6;
+  display: block;
+}
+.species-descr {
+  display: block;
+  padding-left: 20px;
+  font-size: 26px;
+  line-height: 110%;
+  margin-bottom: 20px;
+}

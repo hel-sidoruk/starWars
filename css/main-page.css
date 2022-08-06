@@ -1,0 +1,34 @@
+.title-main {
+  opacity: 1;
+}
+.film {
+  display: flex;
+}
+.film:nth-child(2n) img {
+  order: 1;
+  border-radius: 30px 120px 30px 30px;
+}
+.film:not(:last-child) {
+  margin-bottom: 100px;
+}
+.image {
+  max-width: 556px;
+  max-height: 90vh;
+  box-shadow: 7px 7px 15px 4px rgb(54, 54, 54);
+  border-radius: 120px 30px 30px;
+  object-fit: cover;
+}
+.film-descr {
+  padding-left: 50px;
+  padding-top: 50px;
+}
+.film-title {
+  text-transform: uppercase;
+  font-family: "krophed";
+  font-size: 64px;
+  margin-bottom: 80px;
+  color: #949494;
+  text-align: center;
+  text-shadow: 4px 4px 6px #fff;
+  font-weight: 400;
+}
