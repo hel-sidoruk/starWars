@@ -24,7 +24,9 @@ if (path[path.length - 1] === 'index.html' || path[path.length - 1] === '') {
 function renderPage(moduleName, apiUrl, cssStyles) {
   Promise.all([moduleName, apiUrl, cssStyles].map((src) => loadResource(src)))
     .then(([pageModule, data]) => {
-      appContainer.append(pageModule.renderMainPage(data));
+      appContainer.innerHTML = ''
+      appContainer.append(pageModule.renderMainPage(data).sectionTitle);
+      appContainer.append(pageModule.renderMainPage(data).content);
       animateaAppearingElements();
       document.querySelectorAll('a').forEach((link) => {
         mouseHoverEffect(link, 'links-visible');
@@ -40,6 +42,7 @@ function renderFilmPage(data) {
     loadResource('css/film-page.css'),
   ])
     .then(([planets, species, module]) => {
+      appContainer.innerHTML = ''
       appContainer.append(module.renderFilm(data, planets, species));
       animateaAppearingElements();
     });

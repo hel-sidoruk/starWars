@@ -3,6 +3,7 @@
 import { createNewElement } from './settings.js';
 
 export function renderMainPage(data) {
+  const sectionTitle = createNewElement('h1', ['section-title', 'element-animation'], 'All episodes')
   const content = createNewElement('div', ['content']);
   const numbers = {
     1: 'I',
@@ -43,5 +44,5 @@ export function renderMainPage(data) {
     content.append(filmBlock);
   }
 
-  return content;
+  return { content, sectionTitle };
 }
