@@ -11,8 +11,9 @@ initBackground();
 
 const searchParams = new URLSearchParams(window.location.search);
 const filmID = searchParams.get('episodeID');
+const path = window.location.pathname.split('/');
 
-if (window.location.pathname === '/index.html') {
+if (path[path.length - 1] === 'index.html' || path[path.length - 1] === '') {
   if (!searchParams.get('back')) initPreloader();
   else {
     starWarsDemo.remove();
