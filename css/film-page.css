@@ -236,8 +236,8 @@
 .species-modal {
   background-color: rgba(0,0,0,0.9);
   position: relative;
-  width: 50vw;
-  height: 85vh;
+  width: fit-content;
+  max-width: 60vw;
   margin: 80px auto;
   display: flex;
   padding: 50px;
@@ -252,7 +252,7 @@
 }
 .species-modal img {
   max-height: 80%;
-  max-width: 50%;
+  max-width: 350px;
   object-fit: contain;
   align-self: center;
 }
@@ -263,6 +263,7 @@
 .species-modal-content {
   width: 50%;
   padding-left: 30px;
+  flex-grow: 1;
 }
 .species-property {
   font-size: 16px;
